@@ -1,4 +1,4 @@
-0.8.2.3 changes
+0.8.6.3 changes
 =============
 
 - Coin Control - experts only GUI selection of inputs before you send a transaction

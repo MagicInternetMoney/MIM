@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile magicinternetmoney-0.8.2.3-win32-setup.exe
+OutFile magicinternetmoney-0.8.6.3-win32-setup.exe
 InstallDir $PROGRAMFILES\MagicInternetMoney
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 0.8.2.3
+VIProductVersion 0.8.6.3
 VIAddVersionKey ProductName MagicInternetMoney
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
