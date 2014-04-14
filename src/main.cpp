@@ -2114,12 +2114,12 @@ int GetAuxPowStartBlock()
     if (fTestNet)
         return 1; // never
     else
-        return 21600; // magicinternetmoney starts to be LTC merged from block 21600 (15 days)
+        return 199200; // magicinternetmoney starts to be LTC merged from block 21600 (15 days)
 }
 
 int GetOurChainID()
 {
-    return 0x0086; // magicinternetmoney has got ChainID=1123 hehe in LTC-merged mining network
+    return 0x0086; // magicinternetmoney 
 }
 
 bool CBlockHeader::CheckProofOfWork(int nHeight) const
