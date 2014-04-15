@@ -30,7 +30,7 @@ CCriticalSection cs_main;
 
 CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
-unsigned int THE_CHANGE = 173627;
+unsigned int THE_CHANGE = 173774;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0x5706e2c132a4b9362656fe56568324a9035f540a361f77cadce7af4a55e4b0c8");
