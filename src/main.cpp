@@ -30,6 +30,7 @@ CCriticalSection cs_main;
 
 CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
+unsigned int THE_CHANGE = 173627;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
 uint256 hashGenesisBlock("0x5706e2c132a4b9362656fe56568324a9035f540a361f77cadce7af4a55e4b0c8");
@@ -1084,7 +1085,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
                 else if(nHeight < 172800)
                         nSubsidy = 20000 * COIN;
                 else if(nHeight < 259200)
-                        nSubsidy = 10000 * COIN;
+                        nSubsidy = 100 * COIN;
 
     return nSubsidy + nFees;
 }
@@ -1232,7 +1233,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
                 PastDifficultyAveragePrev = PastDifficultyAverage;
                 
                 
-                if (BlockReading->nHeight > 199200 && LatestBlockTime < BlockReading->GetBlockTime()) {
+                if (BlockReading->nHeight > THE_CHANGE && LatestBlockTime < BlockReading->GetBlockTime()) {
 					//eliminates the ability to go back in time
 					LatestBlockTime = BlockReading->GetBlockTime();
 				}
@@ -1241,7 +1242,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBloc
                 PastRateActualSeconds                        = BlockLastSolved->GetBlockTime() - BlockReading->GetBlockTime();
                 PastRateTargetSeconds                        = TargetBlocksSpacingSeconds * PastBlocksMass;
                 PastRateAdjustmentRatio                        = double(1);
-               if (BlockReading->nHeight > 199200){
+               if (BlockReading->nHeight > THE_CHANGE){
 					//this should slow down the upward difficulty change
 					if (PastRateActualSeconds < 5) { PastRateActualSeconds = 5; }
 				}
@@ -2114,7 +2115,7 @@ int GetAuxPowStartBlock()
     if (fTestNet)
         return 1; // never
     else
-        return 199200; // magicinternetmoney starts to be LTC merged from block 21600 (15 days)
+        return THE_CHANGE; // magicinternetmoney starts to be FRK merged now
 }
 
 int GetOurChainID()
@@ -3292,7 +3293,7 @@ bool static AlreadyHave(const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0x97, 0x91, 0x04, 0x27 }; // MagicInternetMoney: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0x97, 0x92, 0x04, 0x27 }; // Changed MagicBits to force network change.
 
 
 void static ProcessGetData(CNode* pfrom)
